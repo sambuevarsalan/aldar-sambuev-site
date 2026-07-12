@@ -614,7 +614,7 @@ figcaption {
   left: 50%;
   width: min(580px, 80vw);
   text-align: center;
-  transform: translate(-50%, -50%);
+  translate: -50% -50%;
 }
 
 .season-turn h2 {
@@ -842,6 +842,18 @@ figcaption {
   aspect-ratio: 16 / 9;
   object-fit: cover;
   filter: saturate(0.38) contrast(1.08) brightness(0.82);
+}
+
+.journey-medal img {
+  aspect-ratio: 4 / 3;
+}
+
+.journey-medal--2025 img {
+  object-position: 50% 28%;
+}
+
+.journey-medal--2026 img {
+  object-position: 50% 22%;
 }
 
 .journey-child figcaption {
@@ -1770,6 +1782,19 @@ figcaption {
     width: 148%;
   }
 
+  .home-pause .buryatia-flag-echo {
+    top: 9%;
+    right: -10%;
+    left: auto;
+    width: 64%;
+    opacity: 0.24;
+    mix-blend-mode: normal;
+    filter: saturate(0.78) contrast(0.94) blur(0.45px);
+    -webkit-mask-image: radial-gradient(ellipse 88% 80% at 72% 38%, #000 0%, rgba(0, 0, 0, 0.84) 48%, transparent 88%);
+    mask-image: radial-gradient(ellipse 88% 80% at 72% 38%, #000 0%, rgba(0, 0, 0, 0.84) 48%, transparent 88%);
+    transform: rotate(-1deg);
+  }
+
   .home-pause > div {
     width: 100%;
     margin: 0;
@@ -1843,7 +1868,7 @@ figcaption {
   }
 
   .lmh-visual__motion {
-    right: -8%;
+    right: 10%;
   }
 
   .opportunity-line {
