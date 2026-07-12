@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Алдар Самбуев">
+  <rect width="64" height="64" rx="16" fill="#11110f"/>
+  <path d="M15 48 30.5 14h3L49 48h-7.5l-3.2-7.7H25.7L22.5 48H15Zm13.4-14.4h7.2L32 24.7l-3.6 8.9Z" fill="#f2efe8"/>
+  <path d="M43 15c4.7 2.5 7.4 6 8 10.5" fill="none" stroke="#c7f33e" stroke-linecap="round" stroke-width="2.5"/>
+</svg>
