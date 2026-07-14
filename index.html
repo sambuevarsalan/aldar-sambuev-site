@@ -23,6 +23,20 @@
   <script defer src="site.js"></script>
 </head>
 <body>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110745364', 'ym');
+
+    ym(110745364, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/110745364" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
   <a class="skip-link" href="#content" data-i18n="skip">Перейти к содержанию</a>
 
   <header class="site-header" aria-label="Основная навигация">
@@ -329,11 +343,11 @@
         <div class="field-row">
           <label>
             <span data-i18n="fieldName">Имя или организация</span>
-            <input type="text" name="name" autocomplete="name" required>
+            <input class="ym-disable-keys" type="text" name="name" autocomplete="name" required>
           </label>
           <label>
             <span data-i18n="fieldContact">Как с вами связаться</span>
-            <input type="text" name="contact" autocomplete="email" required>
+            <input class="ym-disable-keys" type="text" name="contact" autocomplete="email" required>
           </label>
         </div>
         <label>
@@ -348,7 +362,7 @@
         </label>
         <label>
           <span data-i18n="fieldMessage">Расскажите о проекте</span>
-          <textarea name="message" rows="4" required></textarea>
+          <textarea class="ym-disable-keys" name="message" rows="4" required></textarea>
         </label>
         <label class="consent">
           <input type="checkbox" required>
