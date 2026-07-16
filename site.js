@@ -97,10 +97,11 @@ const translations = {
     typeMedia: "Interview or shoot",
     typeOther: "Other proposal",
     fieldMessage: "Tell us about the project",
-    consent: "I agree that the details provided may be used to respond to this enquiry.",
+    consent: "I agree that the details provided may be used to respond to this enquiry. <a href=\"privacy.html\">Personal data policy</a>.",
     prepareEmail: "Prepare email <span>↗</span>",
     formNote: "The form opens your email application. No data is stored on the website.",
     footerLine: "Junior figure skating · official website",
+    privacyLink: "Personal data policy",
     creditsTitle: "Photographs and credits",
     creditsText: "Thank you to the photographers and creators who preserve Aldar's sporting journey. Credits appear beside the images. For questions about attribution, links, or use of material, email <a href=\"mailto:contact@aldarsambuev.ru\">contact@aldarsambuev.ru</a>."
   }
