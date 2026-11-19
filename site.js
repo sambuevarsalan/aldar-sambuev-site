@@ -1,5 +1,66 @@
 const translations = {
   en: {
+    navCurrentSeason: "Season 2026/27",
+    currentSeasonHero: "Season<br><em>2026/27</em>",
+    lastStartHero: "Latest start · Omsk · 4th place · 221.63 pts",
+    startResultsLink: "Competition results <span aria-hidden=\"true\">↓</span>",
+    compareHeroLink: "Compare skates <span aria-hidden=\"true\">↓</span>",
+    currentMusicTitle: "Season programs",
+    currentMusicIntro: "The short program to Bad Bunny and the free skate to Harry Styles.",
+    currentMusicKicker: "2026/27",
+    previousSeasonKicker: "Season archive",
+    shortMusic: "NUEVAYoL · La Romana",
+    omskEvent: "Junior Grand Prix · Stage 6",
+    omskDate: "12–13 November · Omsk",
+    omskTitle: "Heart of Siberia",
+    omskPlace: "4th place",
+    omskTotal: "221.63 pts",
+    omskShort: "SP 82.56",
+    omskFree: "FS 139.07",
+    startProtocol: "Results ↗",
+    gorshkovEvent: "Junior Grand Prix · Stage 2",
+    gorshkovDate: "6–7 October · Moscow",
+    gorshkovTitle: "Gorshkov Memorial",
+    gorshkovPlace: "2nd place",
+    gorshkovTotal: "230.82 pts",
+    gorshkovShort: "SP 78.03",
+    gorshkovFree: "FS 152.79",
+    grinkovDate: "19–20 September · Moscow",
+    grinkovTitle: "Sergei Grinkov Memorial",
+    grinkovPlace: "5th place",
+    grinkovTotal: "210.32 pts",
+    grinkovShort: "SP 74.99",
+    grinkovFree: "FS 135.33",
+    moscowDate: "27–28 August · Moscow",
+    moscowTitle: "Moscow Junior Championships",
+    moscowPlace: "2nd place",
+    moscowTotal: "227.35 pts",
+    moscowShort: "SP 73.49",
+    moscowFree: "FS 153.86",
+    startsTitle: "Competition results",
+    comparemoscowCity: "Moscow",
+    comparemoscowScore: "78.03",
+    compareomskCity: "Omsk",
+    compareomskScore: "82.56",
+    compareTech: "Technical",
+    comparemoscowTech: "42.30",
+    compareComponents: "Components",
+    comparemoscowComponents: "35.73",
+    compareCombo: "Combination",
+    comparemoscowCombo: "9.81",
+    comparemoscowDate: "6 October · 3rd in the short program",
+    comparemoscowNote: "Combination grade of execution (GOE) −0.64",
+    compareDetails: "Judges’ scores ↗",
+    compareomskTech: "44.23",
+    compareomskComponents: "38.33",
+    compareomskCombo: "11.72",
+    compareomskDate: "12 November · 3rd in the short program",
+    compareomskNote: "Combination grade of execution (GOE) +1.27",
+    compareKicker: "Skate comparison · short program",
+    comparePhotoCredit: "Still from the program teaser",
+    compareWatchTeaser: "Watch the teaser ↗",
+    compareDelta: "<strong>+4.53</strong> points from Moscow to Omsk",
+    compareComboTitle: "Combination: triple flip + triple toe loop",
     skip: "Skip to content",
     name: "Aldar Sambuev",
     navPrograms: "Programs",
@@ -37,7 +98,6 @@ const translations = {
     turnTitle: "New music.<br>New movement.",
     turnText: "After the blues short and the dramatic Kukushka come two new musical worlds: Bad Bunny and Harry Styles.",
     shortLabel: "Short program",
-    shortMusic: "A medley of tracks",
     shortMood: "Rhythm, speed, and accent — a new exploration of contemporary movement.",
     freeLabel: "Free skate",
     freeMood: "Air, long lines, and inner tension — another tempo and another scale of movement.",
@@ -213,3 +273,37 @@ if (contactForm) {
     window.location.href = `mailto:contact@aldarsambuev.ru?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
   });
 }
+
+function initComparison(root) {
+  const tabs = [...root.querySelectorAll(".compare-tab")];
+  const panels = tabs.map((tab) => root.querySelector(`#${tab.getAttribute("aria-controls")}`));
+
+  function selectTab(selectedIndex) {
+    tabs.forEach((tab, index) => {
+      const selected = index === selectedIndex;
+      tab.setAttribute("aria-selected", String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+      panels[index].hidden = !selected;
+    });
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => selectTab(index));
+    tab.addEventListener("keydown", (event) => {
+      const destinations = {
+        ArrowLeft: (index + tabs.length - 1) % tabs.length,
+        ArrowRight: (index + 1) % tabs.length,
+        Home: 0,
+        End: tabs.length - 1
+      };
+      if (!Object.hasOwn(destinations, event.key)) return;
+
+      event.preventDefault();
+      const next = destinations[event.key];
+      selectTab(next);
+      tabs[next].focus();
+    });
+  });
+}
+
+initComparison(document.getElementById("compare-bad-bunny"));

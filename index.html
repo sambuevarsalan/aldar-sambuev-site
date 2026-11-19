@@ -42,7 +42,8 @@
   <header class="site-header" aria-label="Основная навигация">
     <a class="wordmark" href="#top" data-i18n="name">Алдар Самбуев</a>
     <nav>
-      <a href="#seasons" data-i18n="navPrograms">Программы</a>
+      <a href="#current-season" data-i18n="navCurrentSeason">Сезон 2026/27</a>
+      <a href="#programs" data-i18n="navPrograms">Программы</a>
       <a href="#journey" data-i18n="navJourney">Путь</a>
       <a href="#people" data-i18n="navPeople">Штаб</a>
       <a href="#collaboration" data-i18n="navCollaboration">Сотрудничество</a>
@@ -59,7 +60,7 @@
   </header>
 
   <main id="content">
-    <section class="scene hero" id="top">
+    <section class="scene hero hero--season" id="top">
       <div class="hero-atmosphere" aria-hidden="true"></div>
       <figure class="hero-visual">
         <picture>
@@ -73,22 +74,179 @@
       <div class="hero-copy" data-reveal>
         <p class="eyebrow" data-i18n="heroEyebrow">Юниорское мужское одиночное катание · КМС</p>
         <h1 data-i18n="name">Алдар Самбуев</h1>
-        <p class="hero-statement" data-i18n="heroStatement">Слышать музыку.<br>Держать линию.<br><em>Расти.</em></p>
-        <p class="hero-intro" data-i18n="heroIntro">Катание развивается там, где спортивная техника встречается с музыкой и характером.</p>
+        <p class="hero-statement" data-i18n="currentSeasonHero">Сезон<br><em>2026/27</em></p>
+        <p class="hero-intro" data-i18n="lastStartHero">Последний старт · Омск · 4-е место · 221,63 балла</p>
         <div class="hero-actions">
-          <a class="line-link" href="#seasons" data-i18n="watchPrograms">Смотреть программы <span>↓</span></a>
-          <a class="line-link" href="https://t.me/RedSweet425" target="_blank" rel="noopener noreferrer" data-i18n="followSeason">Следить за сезоном <span>↗</span></a>
+          <a class="season-primary" href="#current-season" data-i18n="startResultsLink">Результаты стартов <span aria-hidden="true">↓</span></a>
+          <a class="line-link" href="#compare-bad-bunny" data-i18n="compareHeroLink">Сравнить прокаты <span aria-hidden="true">↓</span></a>
         </div>
       </div>
 
       <p class="hero-profile" data-i18n="heroProfile">Юниор · КМС · победитель Кубка сильнейших · призёр юниорского Гран-при и московских стартов</p>
     </section>
 
+    <section class="current-season" id="current-season" aria-labelledby="current-season-title">
+      <p class="eyebrow">2026/27</p>
+      <h2 data-i18n="startsTitle" id="current-season-title">Старты сезона</h2>
+      <div class="start-grid">
+        <article class="start-card" id="start-omsk">
+          <p data-i18n="omskDate" class="start-card__date">12–13 ноября · Омск</p>
+          <h3 data-i18n="omskTitle">Сердце Сибири</h3>
+          <p data-i18n="omskEvent" class="start-card__event">Юниорский Гран-при · 6-й этап</p>
+          <p class="start-card__result">
+            <strong data-i18n="omskPlace">4-е место</strong>
+            <span data-i18n="omskTotal">221,63 балла</span>
+          </p>
+          <p class="start-card__splits">
+            <span data-i18n="omskShort">КП 82,56</span>
+            <span data-i18n="omskFree">ПП 139,07</span>
+          </p>
+          <a href="https://www.fsrussia.ru/results/2627/6etap_jun/CAT001RS.htm" target="_blank" rel="noopener noreferrer"><span data-i18n="startProtocol">Протокол ↗</span></a>
+        </article>
+        <article class="start-card" id="start-gorshkov">
+          <p data-i18n="gorshkovDate" class="start-card__date">6–7 октября · Москва</p>
+          <h3 data-i18n="gorshkovTitle">Мемориал Горшкова</h3>
+          <p data-i18n="gorshkovEvent" class="start-card__event">Юниорский Гран-при · 2-й этап</p>
+          <p class="start-card__result">
+            <strong data-i18n="gorshkovPlace">2-е место</strong>
+            <span data-i18n="gorshkovTotal">230,82 балла</span>
+          </p>
+          <p class="start-card__splits">
+            <span data-i18n="gorshkovShort">КП 78,03</span>
+            <span data-i18n="gorshkovFree">ПП 152,79</span>
+          </p>
+          <a href="https://www.fsrussia.ru/results/2627/2etap_jun/CAT001RS.htm" target="_blank" rel="noopener noreferrer"><span data-i18n="startProtocol">Протокол ↗</span></a>
+        </article>
+        <article class="start-card" id="start-grinkov">
+          <p data-i18n="grinkovDate" class="start-card__date">19–20 сентября · Москва</p>
+          <h3 data-i18n="grinkovTitle">Памяти Сергея Гринькова</h3>
+          <p class="start-card__result">
+            <strong data-i18n="grinkovPlace">5-е место</strong>
+            <span data-i18n="grinkovTotal">210,32 балла</span>
+          </p>
+          <p class="start-card__splits">
+            <span data-i18n="grinkovShort">КП 74,99</span>
+            <span data-i18n="grinkovFree">ПП 135,33</span>
+          </p>
+          <a href="https://ffkm.ru/results/2026-2027/2026-09-19_vsgrinkov/CAT002RS.HTM" target="_blank" rel="noopener noreferrer"><span data-i18n="startProtocol">Протокол ↗</span></a>
+        </article>
+        <article class="start-card" id="start-moscow">
+          <p data-i18n="moscowDate" class="start-card__date">27–28 августа · Москва</p>
+          <h3 data-i18n="moscowTitle">Первенство Москвы</h3>
+          <p class="start-card__result">
+            <strong data-i18n="moscowPlace">2-е место</strong>
+            <span data-i18n="moscowTotal">227,35 балла</span>
+          </p>
+          <p class="start-card__splits">
+            <span data-i18n="moscowShort">КП 73,49</span>
+            <span data-i18n="moscowFree">ПП 153,86</span>
+          </p>
+          <a href="https://ffkm.ru/results/2026-2027/2026-08-24_pm/CAT002RS.HTM" target="_blank" rel="noopener noreferrer"><span data-i18n="startProtocol">Протокол ↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="skate-comparison" id="compare-bad-bunny" aria-labelledby="compare-title">
+      <div>
+        <p data-i18n="compareKicker" class="eyebrow">Сравнение прокатов · короткая программа</p>
+        <h2 id="compare-title">Bad Bunny</h2>
+        <p class="compare-subtitle">NUEVAYoL · La Romana</p>
+        <figure class="compare-figure">
+          <img src="assets/programs/bad-bunny-teaser.webp" alt="" loading="lazy">
+          <figcaption>
+            <span data-i18n="comparePhotoCredit">Кадр из тизера программы</span>
+            <a href="https://t.me/RedSweet425/238" target="_blank" rel="noopener noreferrer"><span data-i18n="compareWatchTeaser">Смотреть тизер ↗</span></a>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="compare-board">
+        <p data-i18n="compareDelta" class="compare-delta"><strong>+4,53</strong> балла от Москвы к Омску</p>
+        <p data-i18n="compareComboTitle" class="compare-subtitle">Каскад: тройной флип + тройной тулуп</p>
+        <div class="compare-tabs" role="tablist" aria-labelledby="compare-title">
+        <button class="compare-tab" type="button" id="skate-moscow" role="tab"
+                aria-selected="true" aria-controls="skate-panel-moscow" tabindex="0">
+          <span data-i18n="comparemoscowCity">Москва</span>
+          <strong data-i18n="comparemoscowScore">78,03</strong>
+        </button>
+        <button class="compare-tab" type="button" id="skate-omsk" role="tab"
+                aria-selected="false" aria-controls="skate-panel-omsk" tabindex="-1">
+          <span data-i18n="compareomskCity">Омск</span>
+          <strong data-i18n="compareomskScore">82,56</strong>
+        </button>
+        </div>
+        <div class="compare-panel" id="skate-panel-moscow" role="tabpanel" aria-labelledby="skate-moscow" tabindex="0">
+          <h3 data-i18n="comparemoscowDate">6 октября · 3-е место в короткой</h3>
+          <p data-i18n="comparemoscowNote">Оценка за качество каскада (GOE) −0,64</p>
+          <dl>
+            <div><dt data-i18n="compareTech">Техника</dt><dd data-i18n="comparemoscowTech">42,30</dd></div>
+            <div><dt data-i18n="compareComponents">Компоненты</dt><dd data-i18n="comparemoscowComponents">35,73</dd></div>
+            <div><dt data-i18n="compareCombo">За каскад</dt><dd data-i18n="comparemoscowCombo">9,81</dd></div>
+          </dl>
+          <a class="compare-protocol" href="https://www.fsrussia.ru/results/2627/2etap_jun/FSKMSINGLES-JUNIOR----QUAL000100--_JudgesDetailsperSkater.pdf#page=1" target="_blank" rel="noopener noreferrer"><span data-i18n="compareDetails">Судейский протокол ↗</span></a>
+        </div>
+        <div class="compare-panel" id="skate-panel-omsk" role="tabpanel" aria-labelledby="skate-omsk" tabindex="0" hidden>
+          <h3 data-i18n="compareomskDate">12 ноября · 3-е место в короткой</h3>
+          <p data-i18n="compareomskNote">Оценка за качество каскада (GOE) +1,27</p>
+          <dl>
+            <div><dt data-i18n="compareTech">Техника</dt><dd data-i18n="compareomskTech">44,23</dd></div>
+            <div><dt data-i18n="compareComponents">Компоненты</dt><dd data-i18n="compareomskComponents">38,33</dd></div>
+            <div><dt data-i18n="compareCombo">За каскад</dt><dd data-i18n="compareomskCombo">11,72</dd></div>
+          </dl>
+          <a class="compare-protocol" href="https://www.fsrussia.ru/results/2627/6etap_jun/FSKMSINGLES-JUNIOR----QUAL000100--_JudgesDetailsperSkater.pdf#page=1" target="_blank" rel="noopener noreferrer"><span data-i18n="compareDetails">Судейский протокол ↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="season-turn scene" id="programs">
+      <span class="turn-year" aria-hidden="true">25/26</span>
+      <span class="turn-arrow" aria-hidden="true">→</span>
+      <span class="turn-year" aria-hidden="true">26/27</span>
+      <div data-reveal>
+        <p class="eyebrow" data-i18n="currentMusicKicker">2026/27</p>
+        <h2 data-i18n="currentMusicTitle">Программы сезона</h2>
+        <p data-i18n="currentMusicIntro">Короткая под Bad Bunny и произвольная под Harry Styles.</p>
+      </div>
+    </section>
+
+    <section class="new-programs" aria-label="Программы сезона 2026/27">
+      <article class="scene new-program new-program--bad-bunny">
+        <div class="new-program__atmosphere" aria-hidden="true"></div>
+        <figure class="new-program__figure" data-reveal>
+          <img src="assets/programs/bad-bunny-teaser.webp" alt="Кадр тизера короткой программы Алдара под музыку Bad Bunny" loading="lazy">
+        </figure>
+        <div class="new-program__copy" data-reveal>
+          <p class="chapter-mark">01 · 2026/27</p>
+          <p class="eyebrow" data-i18n="shortLabel">Короткая программа</p>
+          <h2>Bad Bunny</h2>
+          <p class="new-program__music" data-i18n="shortMusic">NUEVAYoL · La Romana</p>
+          <p data-i18n="shortMood">Ритм, скорость и акцент — новая работа с современной пластикой.</p>
+          <a class="line-link" href="https://t.me/RedSweet425/238" target="_blank" rel="noopener noreferrer" data-i18n="watchTeaser">Смотреть тизер <span>↗</span></a>
+        </div>
+      </article>
+
+      <article class="scene new-program new-program--harry">
+        <div class="new-program__atmosphere" aria-hidden="true"></div>
+        <figure class="new-program__figure" data-reveal>
+          <img src="assets/programs/sign-of-the-times-teaser.webp" alt="Кадр тизера произвольной программы Алдара под музыку Harry Styles" loading="lazy">
+        </figure>
+        <div class="new-program__copy" data-reveal>
+          <p class="chapter-mark">02 · 2026/27</p>
+          <p class="eyebrow" data-i18n="freeLabel">Произвольная программа</p>
+          <h2>Harry Styles</h2>
+          <p class="new-program__music">Sign of the Times</p>
+          <p data-i18n="freeMood">Воздух, длинная линия и внутреннее напряжение — другой темп и другой масштаб движения.</p>
+          <a class="line-link" href="https://t.me/RedSweet425/264" target="_blank" rel="noopener noreferrer" data-i18n="watchTeaser">Смотреть тизер <span>↗</span></a>
+        </div>
+      </article>
+
+      <p class="program-maker"><span data-i18n="programMakerLabel">Над программами Алдар работает с постановщиком</span> <a href="#fedorchenko" data-i18n="fedorchenkoName">Артёмом Федорченко</a>.</p>
+    </section>
+
     <section class="season-story" id="seasons">
       <div class="season-intro" data-reveal>
         <p class="chapter-mark">2025 / 26</p>
         <div>
-          <p class="eyebrow" data-i18n="pastKicker">Сначала — сезон, который уже случился</p>
+          <p class="eyebrow" data-i18n="previousSeasonKicker">Архив сезона</p>
           <h2 data-i18n="pastTitle">Две программы.<br>Два разных характера.</h2>
         </div>
         <p data-i18n="pastIntro">Прошлый сезон показал не один образ Алдара, а диапазон: от блюзовой пластики до драматичной музыки, ставшей поводом для разговора.</p>
@@ -142,51 +300,6 @@
           <strong data-i18n="resultMoscowChampionship">Первенство Москвы · бронза</strong>
         </div>
       </div>
-    </section>
-
-    <section class="season-turn scene">
-      <span class="turn-year" aria-hidden="true">25/26</span>
-      <span class="turn-arrow" aria-hidden="true">→</span>
-      <span class="turn-year" aria-hidden="true">26/27</span>
-      <div data-reveal>
-        <p class="eyebrow" data-i18n="turnKicker">Новый сезон</p>
-        <h2 data-i18n="turnTitle">Новая музыка.<br>Новая пластика.</h2>
-        <p data-i18n="turnText">После блюзовой короткой и драматичной «Кукушки» — два новых музыкальных мира: Bad Bunny и Harry Styles.</p>
-      </div>
-    </section>
-
-    <section class="new-programs" aria-label="Программы сезона 2026/27">
-      <article class="scene new-program new-program--bad-bunny">
-        <div class="new-program__atmosphere" aria-hidden="true"></div>
-        <figure class="new-program__figure" data-reveal>
-          <img src="assets/programs/bad-bunny-teaser.webp" alt="Кадр тизера короткой программы Алдара под музыку Bad Bunny" loading="lazy">
-        </figure>
-        <div class="new-program__copy" data-reveal>
-          <p class="chapter-mark">01 · 2026/27</p>
-          <p class="eyebrow" data-i18n="shortLabel">Короткая программа</p>
-          <h2>Bad Bunny</h2>
-          <p class="new-program__music" data-i18n="shortMusic">Попурри из композиций</p>
-          <p data-i18n="shortMood">Ритм, скорость и акцент — новая работа с современной пластикой.</p>
-          <a class="line-link" href="https://t.me/RedSweet425/238" target="_blank" rel="noopener noreferrer" data-i18n="watchTeaser">Смотреть тизер <span>↗</span></a>
-        </div>
-      </article>
-
-      <article class="scene new-program new-program--harry">
-        <div class="new-program__atmosphere" aria-hidden="true"></div>
-        <figure class="new-program__figure" data-reveal>
-          <img src="assets/programs/sign-of-the-times-teaser.webp" alt="Кадр тизера произвольной программы Алдара под музыку Harry Styles" loading="lazy">
-        </figure>
-        <div class="new-program__copy" data-reveal>
-          <p class="chapter-mark">02 · 2026/27</p>
-          <p class="eyebrow" data-i18n="freeLabel">Произвольная программа</p>
-          <h2>Harry Styles</h2>
-          <p class="new-program__music">Sign of the Times</p>
-          <p data-i18n="freeMood">Воздух, длинная линия и внутреннее напряжение — другой темп и другой масштаб движения.</p>
-          <a class="line-link" href="https://t.me/RedSweet425/264" target="_blank" rel="noopener noreferrer" data-i18n="watchTeaser">Смотреть тизер <span>↗</span></a>
-        </div>
-      </article>
-
-      <p class="program-maker"><span data-i18n="programMakerLabel">Над программами Алдар работает с постановщиком</span> <a href="#fedorchenko" data-i18n="fedorchenkoName">Артёмом Федорченко</a>.</p>
     </section>
 
     <section class="journey scene" id="journey">

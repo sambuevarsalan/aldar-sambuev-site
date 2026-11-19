@@ -1920,3 +1920,368 @@ figcaption {
     transform: none;
   }
 }
+
+/* Current season */
+.hero--season {
+  min-height: min(700px, 100svh);
+  padding-top: 105px;
+  padding-bottom: 75px;
+}
+
+.hero--season .hero-visual figcaption {
+  bottom: 70px;
+  padding: 3px 5px;
+  background: var(--ice);
+  opacity: .85;
+}
+
+.hero--season h1 {
+  margin-bottom: 26px;
+}
+
+.hero--season .hero-statement {
+  font-size: clamp(64px, 7.8vw, 125px);
+  line-height: .84;
+}
+
+.hero--season .hero-intro {
+  margin-top: 24px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.hero--season .hero-actions {
+  align-items: center;
+  gap: 12px 22px;
+}
+
+.season-primary {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  color: var(--night);
+  background: var(--lime);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.season-primary:hover {
+  background: #b1d651;
+}
+
+.season-primary:focus-visible,
+.current-season a:focus-visible {
+  outline-color: #3c5715;
+}
+
+.hero--season .line-link span {
+  color: #354641;
+}
+
+.current-season,
+.skate-comparison {
+  padding: clamp(62px, 7vw, 112px) var(--edge);
+  scroll-margin-top: 45px;
+}
+
+.current-season {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.current-season h2,
+.skate-comparison h2 {
+  margin: 10px 0 30px;
+  font-family: var(--serif);
+  font-size: clamp(44px, 6vw, 88px);
+  font-weight: 400;
+  line-height: .97;
+  letter-spacing: -.055em;
+}
+
+.start-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.start-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  scroll-margin-top: 80px;
+  padding: 20px;
+  border-top: 2px solid #a8b9b4;
+  background: var(--ice);
+}
+
+.start-card:first-child {
+  border-color: #799c2c;
+}
+
+.start-card__date {
+  margin: 0;
+  color: #445754;
+  font-size: 12px;
+  font-weight: 680;
+}
+
+.start-card h3 {
+  margin: 10px 0 2px;
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.2vw, 37px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -.03em;
+}
+
+.start-card__event {
+  margin: 5px 0 18px;
+  color: #435452;
+  font-size: 13px;
+}
+
+.start-card__result {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 11px;
+  margin: auto 0 8px;
+}
+
+.start-card__result strong {
+  font-size: 24px;
+  line-height: 1.15;
+  letter-spacing: -.035em;
+}
+
+.start-card__result span,
+.start-card__splits {
+  color: #354641;
+  font-size: 13px;
+}
+
+.start-card__splits {
+  display: flex;
+  gap: 4px 13px;
+  flex-wrap: wrap;
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.start-card a,
+.compare-protocol {
+  width: fit-content;
+  margin-top: 13px;
+  padding: 8px 0;
+  font-size: 13px;
+  font-weight: 660;
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+
+.skate-comparison {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(28px, 5vw, 80px);
+  color: var(--paper);
+  background: radial-gradient(ellipse at 25% 50%, #2e2533, transparent 55%), #111719;
+}
+
+.skate-comparison h2 {
+  margin-bottom: 12px;
+}
+
+.compare-subtitle {
+  margin: 0 0 22px;
+  color: #c1cdca;
+  font-size: 15px;
+}
+
+.compare-figure {
+  display: grid;
+  grid-template-columns: clamp(115px, 14vw, 175px) minmax(0, 1fr);
+  gap: clamp(14px, 2vw, 24px);
+  align-items: end;
+  margin: 0;
+  padding: 14px;
+  background: rgb(255 255 255 / .055);
+}
+
+.compare-figure img {
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  background: #292d2c;
+}
+
+.compare-figure figcaption {
+  color: #bac7c3;
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+
+.compare-figure a {
+  display: block;
+  width: fit-content;
+  font-family: var(--sans);
+  font-weight: 650;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 8px 0;
+  color: var(--paper);
+  text-decoration: underline;
+  text-underline-offset: .25em;
+  font-size: 13px;
+}
+
+.compare-board {
+  padding-top: 4px;
+}
+
+.compare-delta {
+  margin: 0 0 18px;
+  color: #d3dfdb;
+  font-size: 14px;
+}
+
+.compare-delta strong {
+  margin-right: 8px;
+  color: var(--lime);
+  font-size: 21px;
+  font-variant-numeric: tabular-nums;
+}
+
+.compare-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.compare-tab {
+  display: grid;
+  gap: 2px;
+  min-height: 76px;
+  padding: 11px 13px;
+  border: 1px solid #596563;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.18;
+}
+
+.compare-tab strong {
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.045em;
+}
+
+.compare-tab[aria-selected="true"] {
+  border-color: var(--lime);
+  color: var(--night);
+  background: var(--lime);
+}
+
+.compare-panel {
+  margin-top: 12px;
+  padding: 18px 0 0;
+  border-top: 1px solid #596563;
+}
+
+.compare-panel h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 690;
+}
+
+.compare-panel p {
+  margin: 0;
+  color: #d3dfdb;
+  font-size: 14px;
+}
+
+.compare-panel dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 15px 0 0;
+}
+
+.compare-panel dt {
+  color: #bac7c3;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.compare-panel dd {
+  margin: 4px 0 0;
+  font-size: 22px;
+  font-variant-numeric: tabular-nums;
+}
+
+.compare-protocol {
+  display: inline-block;
+}
+
+#programs,
+#seasons {
+  scroll-margin-top: 55px;
+}
+
+@media (max-width: 1100px) {
+  .start-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .hero--season {
+    height: auto;
+    min-height: max(605px, min(720px, 100svh));
+    padding-top: 84px;
+    padding-bottom: 210px;
+  }
+
+  .hero--season h1 {
+    margin-bottom: 22px;
+  }
+
+  .hero--season .hero-statement {
+    font-size: clamp(55px, 15vw, 106px);
+  }
+
+  .hero--season .hero-visual {
+    top: 36%;
+    bottom: 0;
+  }
+
+  .hero--season .hero-intro {
+    margin-top: 20px;
+  }
+
+  .hero--season .hero-actions {
+    gap: 7px 15px;
+  }
+
+  .hero--season .hero-visual figcaption {
+    bottom: 91px;
+  }
+
+  .hero--season .hero-visual::after {
+    background: linear-gradient(180deg, rgba(237, 241, 239, .97), rgba(237, 241, 239, .7) 25%, transparent 54%);
+  }
+
+  .skate-comparison {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 460px) {
+  .start-grid {
+    grid-template-columns: 1fr;
+  }
+}
