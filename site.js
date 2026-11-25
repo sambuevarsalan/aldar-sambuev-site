@@ -307,3 +307,50 @@ function initComparison(root) {
 }
 
 initComparison(document.getElementById("compare-bad-bunny"));
+
+function initHeroOpener() {
+  const heroVisual = document.querySelector(".hero-visual");
+  const heroPhoto = heroVisual.querySelector("img");
+  const iceCut = document.querySelector(".hero-ice");
+  const replayButton = document.querySelector(".hero-preview-replay");
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+  let scheduledCut;
+
+  function returnToPhoto() {
+    heroVisual.classList.remove("is-cutting");
+  }
+
+  function showIceCut() {
+    clearTimeout(scheduledCut);
+    iceCut.currentTime = 0;
+    iceCut.play().catch(returnToPhoto);
+  }
+
+  iceCut.addEventListener("playing", () => heroVisual.classList.add("is-cutting"));
+  iceCut.addEventListener("ended", returnToPhoto);
+  iceCut.addEventListener("pause", returnToPhoto);
+  iceCut.addEventListener("error", returnToPhoto);
+  replayButton.addEventListener("click", showIceCut);
+
+  function scheduleIceCut() {
+    if (heroPhoto.naturalWidth && !reducedMotion.matches) {
+      scheduledCut = setTimeout(showIceCut, 2300);
+    }
+  }
+
+  if (heroPhoto.complete) {
+    scheduleIceCut();
+  } else {
+    heroPhoto.addEventListener("load", scheduleIceCut, { once: true });
+  }
+
+  reducedMotion.addEventListener("change", (event) => {
+    if (event.matches) {
+      clearTimeout(scheduledCut);
+      iceCut.pause();
+      returnToPhoto();
+    }
+  });
+}
+
+initHeroOpener();
