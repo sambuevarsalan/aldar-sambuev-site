@@ -2286,76 +2286,173 @@ figcaption {
   }
 }
 
-/* Current-season hero playback */
-.hero-visual picture {
-  display: block;
-}
+/* Current-season hero loop */
+.hero-visual { container-type: size; }
+.hero-visual picture { display: block; }
 
-.hero-ice {
+.hero-opening {
   position: absolute;
   inset: 0;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-opening-enabled .hero-visual:is([data-opening="waiting"], [data-opening="playing"], [data-opening="restarting"]) .hero-opening {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hero-opening-enabled .hero-visual:is([data-opening="complete"], [data-opening="seeking"]) .hero-opening {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 440ms ease, visibility 0s linear 440ms;
+}
+
+.hero-opening-enabled .hero-visual[data-opening="restarting"] .hero-opening {
+  transition: opacity 650ms ease-in-out;
+}
+
+.hero-visual[data-opening="playing"] .hero-opening {
+  animation: resolve-photograph var(--opening-duration, 6s) linear both;
+}
+
+.hero-opening-ice {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: 53% center;
-  filter: saturate(.65) brightness(1.13);
+  filter: saturate(.68) brightness(1.19);
+}
+
+.hero-opening-figure {
+  position: absolute;
+  inset: 0;
+  filter: blur(3.5px);
+}
+
+.hero-visual[data-opening="playing"] .hero-opening-figure {
+  animation: focus-subject var(--opening-duration, 6s) ease-in-out both;
+}
+
+.hero-opening-subject {
+  position: absolute;
+  top: 50%;
+  left: 61%;
+  translate: -61% -50%;
+  width: max(100%, calc(100cqh * 1280 / 853));
+  aspect-ratio: 1280 / 853;
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 105ms ease-out;
+  background: url("assets/curated-telegram/hero-desktop-timokhova.webp") center / 100% 100% no-repeat;
+  clip-path: polygon(
+    78.6719% 0.0000%, 80.4688% 0.0000%, 78.4375% 3.6342%, 78.1250% 6.3306%, 79.5312% 8.9097%,
+    79.6875% 11.3716%, 77.8906% 9.7304%, 76.4062% 9.1442%, 74.3750% 11.6061%, 72.9688% 14.5369%,
+    70.7031% 21.5709%, 68.9062% 25.2052%, 66.4844% 32.0047%, 63.5938% 37.6319%, 61.4844% 44.9004%,
+    62.2656% 52.4033%, 63.8281% 58.2649%, 66.7188% 64.7128%, 68.8281% 67.2919%, 73.9062% 69.1676%,
+    79.6875% 68.5815%, 87.1094% 66.9402%, 94.1406% 65.4162%, 100.0000% 64.2438%, 100.0000% 76.2016%,
+    95.4688% 80.3048%, 88.2812% 83.5873%, 81.0938% 88.0422%, 81.0938% 90.3869%, 79.6094% 95.3107%,
+    78.8281% 100.0000%, 67.5781% 100.0000%, 67.8125% 95.8968%, 67.0312% 92.7315%, 65.0781% 95.5451%,
+    62.7344% 92.2626%, 58.7500% 89.2145%, 52.6563% 83.2356%, 47.1875% 76.9050%, 43.4375% 70.8089%,
+    41.6406% 70.2227%, 35.6250% 71.5123%, 28.9844% 72.2157%, 26.8750% 73.6225%, 21.8750% 73.1536%,
+    17.1875% 72.6846%, 15.0000% 73.1536%, 11.7969% 74.9121%, 9.8438% 75.4982%, 8.0469% 75.2638%,
+    7.5000% 74.2087%, 8.5938% 73.6225%, 10.7812% 73.0363%, 11.7969% 71.9812%, 15.3125% 70.3400%,
+    19.9219% 68.2298%, 24.6875% 66.2368%, 29.4531% 64.2438%, 34.5312% 62.7198%, 38.2031% 60.0234%,
+    40.3906% 57.3271%, 42.7344% 55.5686%, 43.7500% 55.4513%, 44.6094% 53.1067%, 42.4219% 52.5205%,
+    40.5469% 51.3482%, 39.2969% 49.8242%, 38.0469% 46.5416%, 37.2656% 42.9074%, 35.7812% 41.2661%,
+    35.1562% 39.0387%, 35.4688% 36.4596%, 37.1094% 33.9977%, 38.2812% 32.3564%, 40.6250% 31.0668%,
+    42.9688% 30.4807%, 45.0000% 29.7773%, 47.5781% 31.0668%, 49.5312% 32.8253%, 50.9375% 36.1079%,
+    51.6406% 39.5076%, 50.8594% 42.2040%, 49.6875% 43.1419%, 49.1406% 45.9555%, 50.6250% 48.0657%,
+    51.4062% 48.6518%, 52.1094% 43.9625%, 54.3750% 41.5006%, 58.2031% 34.3494%, 60.7812% 29.4256%,
+    63.1250% 23.5639%, 65.3125% 20.2814%, 67.1094% 16.7644%, 69.1406% 13.2474%, 71.4062% 9.1442%,
+    72.8125% 7.0340%, 75.5469% 4.3376%, 77.7344% 2.3447%
+  );
 }
 
-.hero-visual.is-cutting .hero-ice {
-  opacity: 1;
+.hero-visual[data-opening="playing"] .hero-opening-subject {
+  animation: resolve-subject var(--opening-duration, 6s) ease-in-out both;
 }
 
-.hero-visual.is-cutting figcaption {
+.hero-opening-enabled .hero-visual:is([data-opening="waiting"], [data-opening="playing"], [data-opening="restarting"]) figcaption {
   opacity: 0;
 }
 
-.hero-preview-replay {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  margin-top: 13px;
-  padding: 0 11px;
-  border: 1px solid rgba(17, 22, 23, .24);
-  color: var(--ink);
-  background: rgba(247, 247, 242, .78);
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
+.hero-visual[data-opening="playing"] figcaption {
+  animation: resolve-credit var(--opening-duration, 6s) linear both;
 }
 
-.hero-preview-replay:hover {
-  background: var(--paper);
+@keyframes resolve-photograph {
+  0%, 33% { opacity: 1; }
+  33% { animation-timing-function: cubic-bezier(.38, .03, .38, 1); }
+  99%, 100% { opacity: 0; }
 }
 
-.hero-preview-replay span[aria-hidden] {
-  font-size: 9px;
+@keyframes resolve-subject {
+  0%, 10% { opacity: 0; filter: saturate(.12) contrast(1.03) brightness(.19); }
+  38% { opacity: .93; filter: saturate(.22) contrast(1.03) brightness(.25); }
+  85%, 100% { opacity: 1; filter: saturate(.52) contrast(1.03) brightness(1.06); }
 }
 
-html[lang="ru"] .hero-preview-replay span[lang="en"],
-html[lang="en"] .hero-preview-replay span[lang="ru"] {
-  display: none;
+@keyframes focus-subject {
+  0%, 36% { filter: blur(3.5px); }
+  84%, 100% { filter: blur(0); }
+}
+
+@keyframes resolve-credit {
+  0%, 71% { opacity: 0; }
+  100% { opacity: .85; }
 }
 
 @media (max-width: 760px) {
-  .hero.hero--season {
-    min-height: max(605px, 100svh);
-  }
+  .hero.hero--season { min-height: max(605px, 100svh); }
 
   .hero--season .hero-visual::after {
     background:
       linear-gradient(180deg, rgba(237, 241, 239, .94), transparent 26%),
-      linear-gradient(90deg, rgba(237, 241, 239, .58), transparent 58%);
+      linear-gradient(90deg, rgba(237, 241, 239, .61), transparent 59%);
   }
 
-  .hero-ice {
-    object-position: 40% center;
-  }
+  .hero-opening-ice { object-position: 43% center; }
 
-  .hero-preview-replay {
-    margin-top: 8px;
+  .hero-opening-subject {
+    left: 50%;
+    translate: -50% -50%;
+    width: max(100%, 100cqh);
+    aspect-ratio: 1;
+    background-image: url("assets/curated-telegram/hero-mobile-timokhova.webp");
+    clip-path: polygon(
+      0.0000% 22.6562%, 1.0938% 21.7969%, 3.0469% 23.2812%, 4.9219% 25.3906%, 6.1719% 24.2969%,
+    4.1406% 20.7812%, 4.6094% 19.2969%, 5.7812% 19.8438%, 8.9844% 24.3750%, 10.3125% 24.6094%,
+    11.6406% 24.3750%, 12.5000% 23.3594%, 13.5937% 23.3594%, 13.9844% 24.3750%, 12.8125% 26.5625%,
+    14.2188% 27.3438%, 14.5313% 28.3594%, 21.0938% 30.1562%, 30.6250% 30.0781%, 34.6875% 31.4063%,
+    42.8125% 31.7188%, 50.8594% 30.4688%, 55.7813% 29.3750%, 59.7656% 28.6719%, 60.7031% 28.3594%,
+    58.3594% 27.9687%, 55.7813% 26.5625%, 54.7656% 24.3750%, 55.1562% 21.3281%, 54.2969% 19.2969%,
+    53.2031% 17.8125%, 51.5625% 16.0938%, 50.7812% 13.9062%, 52.8906% 11.0938%, 52.8125% 8.7500%,
+    55.4688% 6.1719%, 58.9844% 6.4062%, 59.1406% 4.7656%, 61.9531% 4.6875%, 63.6719% 2.8125%,
+    65.4688% 3.4375%, 66.1719% 5.2344%, 68.5938% 5.8594%, 69.4531% 7.8906%, 72.6562% 8.5938%,
+    74.2188% 11.2500%, 75.2344% 14.5313%, 75.6250% 17.9688%, 75.7031% 19.8438%, 73.6719% 21.0156%,
+    71.7188% 21.4062%, 70.2344% 23.1250%, 70.3125% 25.3906%, 70.2344% 26.7188%, 76.1719% 27.3438%,
+    80.0000% 27.8125%, 83.1250% 29.7656%, 84.6094% 33.7500%, 84.6875% 38.4375%, 85.9375% 42.4219%,
+    85.7031% 46.5625%, 87.4219% 50.3125%, 87.5000% 52.8906%, 88.0469% 55.5469%, 88.2812% 58.7500%,
+    89.3750% 64.6875%, 89.8438% 71.0156%, 90.2344% 76.1719%, 89.1406% 80.4688%, 88.4375% 85.3906%,
+    88.9844% 91.4844%, 86.9531% 91.8750%, 86.0938% 88.6719%, 85.6250% 84.0625%, 86.7969% 93.3594%,
+    88.9062% 100.0000%, 77.2656% 100.0000%, 75.1562% 97.2656%, 73.8281% 94.5312%, 73.0469% 91.5625%,
+    72.2656% 90.0781%, 71.3281% 91.4062%, 70.4688% 94.8438%, 70.3906% 100.0000%, 60.9375% 100.0000%,
+    60.4688% 95.0000%, 60.0000% 88.3594%, 59.9219% 80.3125%, 59.9219% 77.4219%, 59.0625% 76.5625%,
+    60.5469% 72.6562%, 59.2188% 69.4531%, 58.4375% 65.6250%, 57.3438% 60.7812%, 56.1719% 54.8438%,
+    54.7656% 50.9375%, 52.8125% 46.4062%, 51.3281% 43.2031%, 48.4375% 41.6406%, 44.2188% 40.6250%,
+    41.2500% 39.5312%, 37.5000% 39.2188%, 34.0625% 38.5938%, 32.1094% 37.5781%, 28.1250% 37.4219%,
+    21.8750% 36.1719%, 17.0312% 34.5312%, 12.1094% 32.8906%, 9.6875% 32.8906%, 7.0312% 31.7188%,
+    5.7812% 30.5469%, 3.3594% 30.8594%, 0.0000% 30.7031%, 0.0000% 29.2969%, 2.4219% 28.9844%,
+    4.5312% 28.8281%, 4.8438% 28.2031%, 2.4219% 27.8125%, 0.0000% 27.1094%, 0.0000% 25.5469%,
+    3.0469% 26.9531%, 4.7656% 26.8750%, 2.7344% 25.1563%, 0.0000% 24.6875%
+    );
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-opening-enabled .hero-visual .hero-opening { display: none; }
+
+  .hero-opening-enabled .hero-visual figcaption { opacity: .85; }
 }

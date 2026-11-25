@@ -309,48 +309,96 @@ function initComparison(root) {
 initComparison(document.getElementById("compare-bad-bunny"));
 
 function initHeroOpener() {
-  const heroVisual = document.querySelector(".hero-visual");
-  const heroPhoto = heroVisual.querySelector("img");
-  const iceCut = document.querySelector(".hero-ice");
-  const replayButton = document.querySelector(".hero-preview-replay");
-  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
-  let scheduledCut;
+  const visual = document.querySelector(".hero-visual");
+  const opening = visual.querySelector(".hero-opening");
+  const ice = visual.querySelector(".hero-opening-ice");
+  const motion = matchMedia("(prefers-reduced-motion: reduce)");
+  const speed = .84;
+  const photoHoldMs = 4500;
+  const returnToIceMs = 650;
+  const loadTimeoutMs = 2800;
+  let timer;
+  let failed = false;
 
-  function returnToPhoto() {
-    heroVisual.classList.remove("is-cutting");
+  function canAnimate() {
+    return !failed && !motion.matches && !document.hidden;
   }
 
-  function showIceCut() {
-    clearTimeout(scheduledCut);
-    iceCut.currentTime = 0;
-    iceCut.play().catch(returnToPhoto);
-  }
-
-  iceCut.addEventListener("playing", () => heroVisual.classList.add("is-cutting"));
-  iceCut.addEventListener("ended", returnToPhoto);
-  iceCut.addEventListener("pause", returnToPhoto);
-  iceCut.addEventListener("error", returnToPhoto);
-  replayButton.addEventListener("click", showIceCut);
-
-  function scheduleIceCut() {
-    if (heroPhoto.naturalWidth && !reducedMotion.matches) {
-      scheduledCut = setTimeout(showIceCut, 2300);
+  function showPhotograph(repeat = false) {
+    clearTimeout(timer);
+    visual.dataset.opening = "complete";
+    ice.pause();
+    if (repeat && canAnimate()) {
+      timer = setTimeout(resetIce, photoHoldMs);
     }
   }
 
-  if (heroPhoto.complete) {
-    scheduleIceCut();
-  } else {
-    heroPhoto.addEventListener("load", scheduleIceCut, { once: true });
+  function failOpening() {
+    failed = true;
+    showPhotograph();
   }
 
-  reducedMotion.addEventListener("change", (event) => {
-    if (event.matches) {
-      clearTimeout(scheduledCut);
-      iceCut.pause();
-      returnToPhoto();
+  function playIce() {
+    clearTimeout(timer);
+    if (!canAnimate()) {
+      showPhotograph();
+      return;
     }
+    document.documentElement.classList.add("hero-opening-enabled");
+    visual.dataset.opening = "waiting";
+    timer = setTimeout(failOpening, loadTimeoutMs);
+    ice.play().catch(() => {
+      if (visual.dataset.opening === "waiting") failOpening();
+    });
+  }
+
+  function returnToIce() {
+    clearTimeout(timer);
+    visual.dataset.opening = "restarting";
+    timer = setTimeout(playIce, returnToIceMs);
+  }
+
+  function resetIce() {
+    if (!canAnimate()) {
+      showPhotograph();
+      return;
+    }
+    if (ice.currentTime <= .06) {
+      returnToIce();
+      return;
+    }
+    visual.dataset.opening = "seeking";
+    timer = setTimeout(failOpening, loadTimeoutMs);
+    ice.currentTime = 0;
+  }
+
+  function finishOpening() {
+    if (visual.dataset.opening === "playing") showPhotograph(true);
+  }
+
+  ice.addEventListener("playing", () => {
+    if (visual.dataset.opening !== "waiting") return;
+    clearTimeout(timer);
+    visual.style.setProperty("--opening-duration", ice.duration / speed + "s");
+    visual.dataset.opening = "playing";
   });
+  ice.addEventListener("seeked", () => {
+    if (visual.dataset.opening === "seeking") returnToIce();
+  });
+  ice.addEventListener("ended", finishOpening);
+  ice.addEventListener("error", failOpening);
+  opening.addEventListener("animationend", event => {
+    if (event.target === opening && event.animationName === "resolve-photograph") finishOpening();
+  });
+  motion.addEventListener("change", () => showPhotograph(true));
+  document.addEventListener("visibilitychange", () => showPhotograph(true));
+  window.addEventListener("pagehide", () => showPhotograph());
+  window.addEventListener("pageshow", event => {
+    if (event.persisted) showPhotograph(true);
+  });
+
+  ice.playbackRate = speed;
+  playIce();
 }
 
 initHeroOpener();
